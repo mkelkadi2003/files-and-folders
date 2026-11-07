@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bungee", "Fredoka", system-ui, sans-serif;
+  --font-body: "Fredoka", system-ui, sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  background: #0b1026;
+  color: white;
+  min-height: 100%;
+}
+
+.agent-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(236, 72, 153, 0.18), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(250, 204, 21, 0.12), transparent 50%),
+    linear-gradient(180deg, #0b1026 0%, #131a3d 100%);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop-in 0.45s cubic-bezier(.2,1.4,.4,1) both; }
+
+@keyframes slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.5s ease-out both; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px) rotate(-2deg); }
+  40% { transform: translateX(10px) rotate(2deg); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.animate-shake { animation: shake 0.45s ease-in-out; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+.animate-wiggle { animation: wiggle 1.2s ease-in-out infinite; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+
+@keyframes vault-spin {
+  0% { transform: rotate(0deg); }
+  60% { transform: rotate(-540deg); }
+  100% { transform: rotate(-720deg); }
+}
+.animate-vault-spin { animation: vault-spin 1.6s ease-in-out forwards; }
+
+@keyframes door-open {
+  0% { transform: perspective(900px) rotateY(0deg); }
+  100% { transform: perspective(900px) rotateY(-105deg); }
+}
+.animate-door-open {
+  transform-origin: left center;
+  animation: door-open 1.2s 1.4s ease-in-out forwards;
+}
+
+@keyframes lid-open {
+  0% { transform: perspective(500px) rotateX(0deg); }
+  100% { transform: perspective(500px) rotateX(-110deg); }
+}
+.animate-lid-open {
+  transform-origin: center bottom;
+  animation: lid-open 1s 0.3s ease-in-out forwards;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
+  50% { box-shadow: 0 0 30px 10px rgba(250, 204, 21, 0.35); }
+}
+.animate-glow { animation: glow-pulse 1.8s ease-in-out infinite; }
+
+@keyframes scan {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+.scanline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.15), transparent);
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+}
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 12px;
+  height: 18px;
+  border-radius: 3px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.animate-sparkle { animation: sparkle 1.6s ease-in-out infinite; }
+
+@keyframes tooltip-in {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+.animate-tooltip { animation: tooltip-in 0.2s ease-out both; }
+
+.btn-3d {
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+  transition: transform 0.08s, box-shadow 0.08s, filter 0.15s;
+}
+.btn-3d:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 0 rgba(0,0,0,0.35); }
+.btn-3d:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); }
+
+.text-glow { text-shadow: 0 0 18px rgba(250, 204, 21, 0.6); }
+.text-glow-cyan { text-shadow: 0 0 18px rgba(56, 189, 248, 0.7); }
